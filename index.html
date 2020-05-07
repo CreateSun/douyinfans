@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>粉丝数量监控系统</title>
+	<link rel="stylesheet" href="./layui.css">
+</head>
+<style>
+	dd {
+		cursor: pointer;
+		text-align: center;
+	}
+	.row {
+		display: flex;
+		flex-direction: row;
+		align-self: flex-start;
+	}
+</style>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">抖音获取粉丝数平台</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="#">抖音获取粉丝数平台</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">任务</a>
+          <dl class="layui-nav-child">
+            <dd onclick="href('#task')">任务列表</dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item" onclick="href('#fans')" style="padding: 0 20px;cursor: pointer;">
+        	粉丝监控
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;" id="body">
+    	<div id="fans">
+    		<div class="row">
+    			<div class="layui-form" action="">
+		  			<div class="layui-form-item">
+			    		<label class="layui-form-label">自动刷新</label>
+			    		<div class="layui-input-block">
+			    		  <input type="checkbox" name="switch" lay-filter="auto" lay-skin="switch" checked/>
+			    		</div>
+					</div>
+		  		</div>
+		  		<button class="layui-btn layui-btn-sm" id="eleButton" style="margin-left: 20px;">导出抖音Id</button>
+		  		<button class="layui-btn layui-btn-sm"  onclick="clearNum()" style="margin-left: 20px;">清空近期增长数</button>
+		  		<button class="layui-btn layui-btn-sm" onclick="setting()" style="margin-left: 20px;">设置后台刷新参数</button>
+    		</div>
+			<table id="user-table" lay-filter="user-table" class="layui-table"></table>
+    	</div>
+    	<div id="task" style="display: none;">
+		<p>任务列表</p>
+		<table id="task-table" lay-filter="task-table" class="layui-table"></table>
+		<script type="text/html" id="toolbarDemo">
+		  <div class="layui-btn-container">
+		    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+		    <button class="layui-btn layui-btn-sm" lay-event="del">删除</button>
+		  </div>
+		</script>
+		<script type="text/html" id="toolbar-user">
+		  <div class="layui-btn-container">
+		    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+		  </div>
+		</script>
+	</div>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+</div>
+<script src="./layui.all.js"></script>
+<script src="./server.js"></script>
+</body>
+</html>
